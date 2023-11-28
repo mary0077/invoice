@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+    padding: 100px;
+    margin-left: 12%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+}
+h1{
+
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.dados {
+    padding: 20px;
+}
+
+.print {
+    display: none;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 600px;
+}
+
+.print h1 {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.dados button {
+    padding: 10px;
+    background-color: #002949;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dados button:hover {
+    background-color: #3f79a5;
+}
+
+.print h2 {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.assinatura {
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+.dados input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px; 
+}
+
+@media print {
+    .print {
+        display: block;
+    }
+
+    .dados {
+        display: none;
+    }
+}
