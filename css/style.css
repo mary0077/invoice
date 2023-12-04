@@ -1,19 +1,21 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+    * {
+        border: 0;
+          box-sizing: content-box;
+          color: inherit;
+          font-family: inherit;
+          font-size: inherit;
+          font-style: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          text-decoration: none;
+          vertical-align: top;
+        }
 }
 
-body {
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    height: 100vh;
-    padding: 100px;
-    margin-left: 12%;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
-}
 h1{
 
 font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -21,7 +23,20 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .dados {
-    padding: 20px;
+
+  position: relative;
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 11in;
+  height: 12in;
+  padding: 0.5in;
+  width: 8.5in;
+  width: 210mm;
+  height: 400mm;
+  background: #FFF;
+  border-radius: 1px;
+  box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
 }
 
 .print {
@@ -70,12 +85,14 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 18px; 
+    font-size: 18px;
+
 }
 
 @media print {
     .print {
         display: block;
+        
     }
 
     .dados {

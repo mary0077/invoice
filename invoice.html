@@ -10,13 +10,14 @@
 
 <body>
     <div class="dados">
-        <h1><span>Gerador de Invoice e Fatura</span></h1>
+        <h1><span>GERADOR DE INVOICE/FATURA</span></h1>
+        <hr>
         <br>
         <label>Tipo de Documento:</label><br />
         
-        <input type="radio" name="tipo_documento" value="invoice" id="invoice">
+        <input type="radio" name="tipo_documento" value="Invoice" id="invoice">
         <label for="invoice">Invoice</label>
-        <input type="radio" name="tipo_documento" value="fatura" id="fatura">
+        <input type="radio" name="tipo_documento" value="Fatura" id="fatura">
         <label for="fatura">Fatura</label><br /><br />
 
         <label for="codigo_invoice">Código da Invoice:</label><br />
@@ -52,9 +53,6 @@
         <label for="titulo">Título do Serviço:</label><br />
         <input type="text" id="titulo" /><br /><br />
 
-        <label for="descricao">Descrição dos Serviços:</label><br />
-        <textarea id="descricao"></textarea><br /><br />
-
         <label for="codigo_swift">Código SWIFT:</label><br />
         <input type="text" id="codigo_swift" /><br /><br />
 
@@ -77,7 +75,6 @@
         <p>Valor R$ <span id="recibo_valor">0,00</span></p>
         <p>Vencimento: <span id="recibo_vencimento"></span></p>
         <p>Título do Serviço: <span id="recibo_titulo"></span></p>
-        <p>Descrição: <span id="recibo_descricao"></span></p>
         <p>Código SWIFT: <span id="recibo_codigo_swift"></span></p>
         <p>Código IBAN: <span id="recibo_codigo_iban"></span></p>
         <p>Data <span id="recibo_data"></span></p>
@@ -103,7 +100,6 @@
             });
             document.getElementById('recibo_vencimento').innerHTML = formatarData(document.getElementById('vencimento').value);
             document.getElementById('recibo_titulo').innerHTML = document.getElementById('titulo').value;
-            document.getElementById('recibo_descricao').innerHTML = document.getElementById('descricao').value;
             document.getElementById('recibo_codigo_swift').innerHTML = document.getElementById('codigo_swift').value;
             document.getElementById('recibo_codigo_iban').innerHTML = document.getElementById('codigo_iban').value;
             document.getElementById('recibo_data').innerHTML = dataAtual();
