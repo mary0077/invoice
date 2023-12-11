@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emissão Invoice</title>
+    <title>Emissão - Signo Contábil</title>
     <link rel='stylesheet' href='css/style.css'>
 </head>
 
 <body>
     <div class="dados">
-        <h1><span>GERADOR DE INVOICE/FATURA</span></h1>
-        <hr>
+        <h1 style="font-size: 30px;"><span>GERADOR DE INVOICE/FATURA</span></h1>
+        
         <br>
         <label>Tipo de Documento:</label><br />
         
@@ -63,23 +63,23 @@
     </div>
 
     <div class="print">
-        <h1><span id="tipo_documento_print"></span> - <span id="recibo_remitente"></span></h1>
-        <p>Código da Invoice: <span id="recibo_codigo_invoice"></span></p>
-        <p>Prestador: <span id="recibo_prestador"></span></p>
-        <p>CNPJ: <span id="recibo_cnpj_prestador"></span></p>
-        <p>Endereço: <span id="recibo_endereco_prestador"></span></p>
-        <p>Telefone: <span id="recibo_telefone_prestador"></span></p>
-        <p>Email: <span id="recibo_email_prestador"></span></p>
-        <p>Cliente: <span id="recibo_nome"></span></p>
-        <p>CPF/CNPJ do Cliente: <span id="recibo_cpf_cnpj_cliente"></span></p>
-        <p>Valor R$ <span id="recibo_valor">0,00</span></p>
-        <p>Vencimento: <span id="recibo_vencimento"></span></p>
-        <p>Título do Serviço: <span id="recibo_titulo"></span></p>
-        <p>Código SWIFT: <span id="recibo_codigo_swift"></span></p>
-        <p>Código IBAN: <span id="recibo_codigo_iban"></span></p>
-        <p>Data <span id="recibo_data"></span></p>
+        <h1 style="margin-bottom: 60px;"><span id="tipo_documento_print"></span> -  <span id="recibo_remitente"></span>
+        <p style="margin-bottom: 10px; font-size: 25PX;">Código da Invoice N°: <span id="recibo_codigo_invoice"></span></p></h1>
+        <p style="margin-bottom: 10px;"><span id="recibo_prestador"></span></p>
+        <p style="margin-bottom: 10px;"><span id="recibo_cnpj_prestador"></span></p>
+        <p style="margin-bottom: 10px;"><span id="recibo_endereco_prestador"></span></p>
+        <p style="margin-bottom: 10px;"><span id="recibo_telefone_prestador"></span></p>
+        <p style="margin-bottom: 60px;"><span id="recibo_email_prestador"></span></p>
+        
+        <p style="margin-bottom: 10px;">Invoice/Fatura para: <span id="recibo_nome"></span></p>
+        <p style="margin-bottom: 10px;"><span id="recibo_cpf_cnpj_cliente"></span></p>
+        <p style="margin-bottom: 10px;">Valor R$ <span id="recibo_valor">0,00</span></p>
+        <p style="margin-bottom: 10px;">Vencimento: <span id="recibo_vencimento"></span></p>
+        <p style="margin-bottom: 60px;">Título do Serviço: <span id="recibo_titulo"></span></p>
+        <p style="margin-bottom: 10px;">Código SWIFT: <span id="recibo_codigo_swift"></span></p>
+        <p style="margin-bottom: 10px;">Código IBAN: <span id="recibo_codigo_iban"></span></p>
+        <p style="margin-bottom: 10px;">Data <span id="recibo_data"></span></p>
         <br /> <br />
-        <div class="assinatura">Assinatura</div>
     </div>
 
     <script>
