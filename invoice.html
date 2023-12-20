@@ -1,121 +1,158 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emissão - Signo Contábil</title>
-    <link rel='stylesheet' href='css/style.css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Emissão de Invoice</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="dados">
-        <h1 style="font-size: 30px;"><span>GERADOR DE INVOICE/FATURA</span></h1>
-        
-        <br>
-        <label>Tipo de Documento:</label><br />
-        
-        <input type="radio" name="tipo_documento" value="Invoice" id="invoice">
-        <label for="invoice">Invoice</label>
-        <input type="radio" name="tipo_documento" value="Fatura" id="fatura">
-        <label for="fatura">Fatura</label><br /><br />
 
-        <label for="codigo_invoice">Código da Invoice:</label><br />
-        <input type="text" id="codigo_invoice" /><br /><br />
+    <div class="invoice-wrapper" id="print-area">
+        <div class="invoice">
+            <div class="invoice-container">
+                <div class="invoice-head">
+                    <div class="invoice-head-top">
+                        <div class="invoice-head-top-left text-start">
+                            <img src="images/logo.png">
+                        </div>
+                        <div class="invoice-head-top-right text-end">
+                            <h3 contenteditable="true">INVOICE</h3>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="invoice-head-middle">
+                        <div class="invoice-head-middle-left text-start">
+                            <p><span class="text-bold">Date</span>: <span contenteditable="true">DD/MM/AAAA</span></p>
+                        </div>
+                        <div class="invoice-head-middle-right text-end">
+                            <p><span class="text-bold">Invoice N°: </span><span contenteditable="true">00000</span></p>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="invoice-head-bottom">
+                        <div class="invoice-head-bottom-left">
+                            <ul>
+                                <li class='text-bold'>Invoice para:</li>
+                                <li contenteditable="true">Digite Nome Completo</li>
+                                <li contenteditable="true">CNPJ/CPF</li>
+                                <li contenteditable="true">Informe o endereço</li>
+                                <li contenteditable="true">Cidade/Estado/País</li>
+                                <li contenteditable="true">Contato</li>
+                            </ul>
+                        </div>
+                        <div class="invoice-head-bottom-right">
+                            <ul class="text-end">
+                                <li class='text-bold'>Pagar para:</li>
+                                <li contenteditable="true">Prestador do Serviço</li>
+                                <li contenteditable="true">CNPJ/CPF</li>
+                                <li contenteditable="true">Informe o Endereço</li>
+                                <li contenteditable="true">Cidade/País</li>
+                                <li contenteditable="true">Email</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-view">
+                    <div class="invoice-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="text-bold">Título do Serviço</td>
+                                    <td class="text-bold">Descrição</td>
+                                    <td class="text-bold">Valor</td>
 
-        <label for="remitente">Prestador do Serviço:</label><br />
-        <input type="text" id="remitente" /><br /><br />
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td contenteditable="true">Informe o serviço</td>
+                                    <td contenteditable="true">Descrição do serviço</td>
+                                    <td contenteditable="true">R$0.00</td>
 
-        <label for="cnpj_prestador">CNPJ do Prestador:</label><br />
-        <input type="text" id="cnpj_prestador" /><br /><br />
+                                </tr>
+                                <tr>
+                                    <td contenteditable="true">Informe o serviço</td>
+                                    <td contenteditable="true">Descrição do serviço</td>
+                                    <td contenteditable="true">R$0.00</td>
 
-        <label for="endereco_prestador">Endereço do Prestador:</label><br />
-        <input type="text" id="endereco_prestador" /><br /><br />
+                                </tr>
+                                </tbody>
+                        </table>
+                        <div class="invoice-body-bottom">
+                            <div class="invoice-body-info-item border-bottom">
+                                <div class="info-item-td text-end"></div>
+                                <div class="info-item-td text-end text-bold">Total</div>
+                            </div>
+                            <div class="invoice-body-info-item border-bottom">
+                                <div class="info-item-td text-end text-bold">Código SWIFT:</div>
+                                <div class="info-item-td text-end" contenteditable="true">00000</div>
+                            </div>
+                            <div class="invoice-body-info-item">
+                                <div class="info-item-td text-end text-bold">Código IBAN: :</div>
+                                <div class="info-item-td text-end" contenteditable="true">00000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="invoice-foot text-center">
+                    <p><span class="text-bold text-center">NOTE:&nbsp;</span>Este é um recibo gerado por computador e não requer assinatura física.</p>
 
-        <label for="telefone_prestador">Telefone do Prestador:</label><br />
-        <input type="text" id="telefone_prestador" /><br /><br />
+                    <div class="invoice-btns">
+                        <button type="button" class="invoice-btn" onclick="printInvoice()">
+                            <span>
+                                <i class="fa-solid fa-print"></i>
+                            </span>
+                            <span>Imprimir</span>
+                        </button>
 
-        <label for="email_prestador">Email do Prestador:</label><br />
-        <input type="text" id="email_prestador" /><br /><br />
-
-        <label for="nome">Cliente:</label><br />
-        <input type="text" id="nome" /><br /><br />
-
-        <label for="cpf_cnpj_cliente">CPF ou CNPJ do Cliente:</label><br />
-        <input type="text" id="cpf_cnpj_cliente" /><br /><br />
-
-        <label for="valor">Valor R$:</label><br />
-        <input type="text" step="0.01" id="valor" /><br /><br />
-
-        <label for="vencimento">Vencimento da Fatura:</label><br />
-        <input type="date" id="vencimento" /><br /><br />
-
-        <label for="titulo">Título do Serviço:</label><br />
-        <input type="text" id="titulo" /><br /><br />
-
-        <label for="codigo_swift">Código SWIFT:</label><br />
-        <input type="text" id="codigo_swift" /><br /><br />
-
-        <label for="codigo_iban">Código IBAN:</label><br />
-        <input type="text" id="codigo_iban" /><br /><br />
-
-        <button onclick="gerarRecibo()">Gerar Recibo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="print">
-        <h1 style="margin-bottom: 60px;"><span id="tipo_documento_print"></span> - <span id="recibo_remitente"></span>
-        <p style="margin-bottom: 10px; font-size: 25px;">CNPJ/CPF<span id="recibo_cnpj_prestador"></span></p></h1>
-        <p style="margin-bottom: 10px;"><span id="recibo_prestador"></span></p>
-        <p style="margin-bottom: 10px;">Código da Invoice N°:<span id="recibo_codigo_invoice"></span></p>
-        <p style="margin-bottom: 10px;"><span id="recibo_endereco_prestador"></span></p>
-        <p style="margin-bottom: 10px;"><span id="recibo_telefone_prestador"></span></p>
-        <p style="margin-bottom: 60px;"><span id="recibo_email_prestador"></span></p>
-        
-        <p style="margin-bottom: 10px;">Invoice/Fatura para:
-            <br> <span id="recibo_nome"></span></p>
-        <p style="margin-bottom: 10px;"><span id="recibo_cpf_cnpj_cliente"></span></p>
-        <p style="margin-bottom: 10px;">Valor R$ <span id="recibo_valor">0,00</span></p>
-        <p style="margin-bottom: 10px;">Vencimento: <span id="recibo_vencimento"></span></p>
-        <p style="margin-bottom: 60px;">Título do Serviço: <span id="recibo_titulo"></span></p>
-        <p style="margin-bottom: 10px;">Código SWIFT: <span id="recibo_codigo_swift"></span></p>
-        <p style="margin-bottom: 10px;">Código IBAN: <span id="recibo_codigo_iban"></span></p>
-        <p style="margin-bottom: 10px;">Data <span id="recibo_data"></span></p>
-        <br /> <br />
-    </div>
-
     <script>
-        function gerarRecibo() {
-            const tipoDocumento = document.querySelector('input[name="tipo_documento"]:checked');
-            document.getElementById('tipo_documento_print').innerHTML = tipoDocumento ? tipoDocumento.value : '';
-            document.getElementById('recibo_codigo_invoice').innerHTML = document.getElementById('codigo_invoice').value;
-            document.getElementById('recibo_remitente').innerHTML = document.getElementById('remitente').value;
-            document.getElementById('recibo_prestador').innerHTML = document.getElementById('remitente').value;
-            document.getElementById('recibo_cnpj_prestador').innerHTML = document.getElementById('cnpj_prestador').value;
-            document.getElementById('recibo_endereco_prestador').innerHTML = document.getElementById('endereco_prestador').value;
-            document.getElementById('recibo_telefone_prestador').innerHTML = document.getElementById('telefone_prestador').value;
-            document.getElementById('recibo_email_prestador').innerHTML = document.getElementById('email_prestador').value;
-            document.getElementById('recibo_nome').innerHTML = document.getElementById('nome').value;
-            document.getElementById('recibo_cpf_cnpj_cliente').innerHTML = document.getElementById('cpf_cnpj_cliente').value;
-            document.getElementById('recibo_valor').innerHTML = parseFloat(document.getElementById('valor').value).toLocaleString('pt-br', {
-                minimumFractionDigits: 2
+        function enableEditing() {
+            var editableElements = document.querySelectorAll('[contenteditable="true"]');
+            editableElements.forEach(function (element) {
+                element.setAttribute('contenteditable', 'true');
             });
-            document.getElementById('recibo_vencimento').innerHTML = formatarData(document.getElementById('vencimento').value);
-            document.getElementById('recibo_titulo').innerHTML = document.getElementById('titulo').value;
-            document.getElementById('recibo_codigo_swift').innerHTML = document.getElementById('codigo_swift').value;
-            document.getElementById('recibo_codigo_iban').innerHTML = document.getElementById('codigo_iban').value;
-            document.getElementById('recibo_data').innerHTML = dataAtual();
+        }
+    
+        function updateTotal() {
+            var rows = document.querySelectorAll('tbody tr');
+            var total = 0;
+    
+            rows.forEach(function (row) {
+                var amountCell = row.querySelector('td:nth-child(3)');
+                var amount = parseFloat(amountCell.textContent.replace('R$', '').replace(',', '.'));
+    
+                total += amount;
+            });
+    
+            var totalCell = document.querySelector('.invoice-body-info-item.border-bottom .info-item-td.text-end');
+            totalCell.textContent = 'R$' + total.toFixed(2);
+        }
+    
+        function printInvoice() {
+            enableEditing();
+            updateTotal();
             window.print();
         }
-
-        function formatarData(data) {
-            const partes = data.split("-");
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-        }
-
-        function dataAtual() {
-            let data = new Date();
-            return data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
-        }
+    
+        document.addEventListener('input', function (event) {
+            if (event.target.closest('td') && event.target.closest('td').cellIndex === 2) {
+                updateTotal();
+            }
+        });
     </script>
 </body>
 
