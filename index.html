@@ -9,117 +9,160 @@
 </head>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        min-width: 100%;
-         /* Aumentei a largura para ocupar 100% da largura disponível */
-    }
-    
-    form {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        width: 25%;
-        box-sizing: border-box;
-    }
-    
-    h1 {
-        text-align: center;
-        color: #0e3fa8;
-    }
-    
-    label {
-        display: block;
-        margin: 8px 0;
-        font-weight: bold;
-    }
-    
-    input {
-        width: calc(100% - 16px);
-        padding: 8px;
-        margin-bottom: 12px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
-    }
-    
-    hr {
-        border: none;
-        border-top: 1px solid #ccc;
-        margin: 20px 0;
-    }
-    
-    button {
-        background-color: #0e3fa8;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 50%;
-        margin-right: 50%;
-    }
-    
-    button:hover {
-        background-color: #0e3fa8;
-    }
-    
-    button:active {
-        background-color: #0e3fa8;
-    }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100%;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: #0e3fa8;
+}
+
+.label-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+label {
+    font-weight: bold;
+    margin-left: 45px; /* Adicionado espaço abaixo do rótulo */
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+input {
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: #0e3fa8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 40%;
+    height: 4vh;
+    font-size: 17px;
+    margin-left: 25%;
+}
+
+button:hover {
+    background-color: #0e3fa8;
+}
+
+button:active {
+    background-color: #0e3fa8;
+}
+
+
     </style>
     
 <body>
     <form id="infoForm">
         <h1>GERADOR INVOICE</h1>
-        <hr>
-        <label for="numero_invoice">Número do Invoice:</label>
-        <input type="text" id="numero_invoice" name="numero_invoice" required>
+        
+        <br><br>
+        <label for="numero_invoice">Número do Invoice/Fatura:</label>
+        <input style="width: 10%;" type="text" id="numero_invoice" name="numero_invoice" required>
 
-        <label for="data">Data:</label>
+        <label for="data">Vencimento da Fatura:</label>
         <input style="font-family:Arial, Helvetica, sans-serif; font-size: 18px;" type="date" id="data" name="data" required>
+<br><br><br>
+        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: #0e3fa8;">INVOICE PARA:</h2>
+<br>
 
         <label for="nome">Nome Completo:</label>
         <input type="text" id="nome" name="nome" required>
 
-        <label for="cnpj_cpf">CNPJ/CPF:</label>
+        <label style="margin-left: 95px;" for="cnpj_cpf">CNPJ/CPF:</label>
         <input type="text" id="cnpj_cpf" name="cnpj_cpf" required>
-
+        <br><br><br>
         <label for="endereco">Endereço:</label>
         <input type="text" id="endereco" name="endereco" required>
 
-        <label for="cidade_estado_pais">Cidade/Estado/País:</label>
+        <label style="margin-left: 95px;" for="cidade_estado_pais">Cidade/Estado/País:</label>
         <input type="text" id="cidade_estado_pais" name="cidade_estado_pais" required>
-
+        <br><br><br>
         <label for="contato">Contato:</label>
-        <input type="text" id="contato" name="contato" required>
+        <input type="number" id="contato" name="contato" required>
 
-        <label for="servico">Título do Serviço:</label>
+        <label style="margin-left: 95px;" for="servico">Título do Serviço:</label>
         <input type="text" id="servico" name="servico" required>
-
+        <br><br><br>
         <label for="descricao">Descrição:</label>
         <input type="text" id="descricao" name="descricao" required>
 
-        <label for="valor">Valor:</label>
-        <input type="text" id="valor" name="valor" required>
+        <label style="margin-left: 95px;" for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" required>
+
+        <br><br><br>
+        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: #0e3fa8">PAGAR PARA:</h2>
+<br>
+
+        <label for="nome_prestador">Nome do Prestador:</label>
+        <input type="text" id="nome_prestador" name="nome_prestador" required>
+
+        <label style="margin-left: 20px;" for="cnpj_cpf_servico">CNPJ/CPF:</label>
+        <input type="text" id="cnpj_cpf_servico" name="cnpj_cpf_servico" required>
+<br><br><br>
+        <label for="endereco_servico">Endereço:</label>
+        <input type="text" id="endereco_servico" name="endereco_servico" required>
+
+        <label style="margin-left: 95px;" for="cidade_pais_servico">Cidade/País:</label>
+        <input style="margin-left: 10px;" type="text" id="cidade_pais_servico" name="cidade_pais_servico" required>
+<br><br><br>
+        <label for="email_servico">Email:</label>
+        <input type="email" id="email_servico" name="email_servico" required>
 
         <label for="codigo_swift">Código SWIFT:</label>
-        <input type="text" id="codigo_swift" name="codigo_swift" required>
+        <input style="width: 10%;" type="text" id="codigo_swift" name="codigo_swift" required>
 
         <label for="codigo_iban">Código IBAN:</label>
-        <input type="text" id="codigo_iban" name="codigo_iban" required>
-
-        <button style="margin-left: 24%;" type="button" onclick="submitForm()">Enviar</button>
+        <input style="width: 10%;" type="text" id="codigo_iban" name="codigo_iban" required>
+<br> <br><br>
+        <button type="button" onclick="submitForm()">ENVIAR</button>
     </form>
 
     <script>
@@ -133,8 +176,15 @@
                 cidade_estado_pais: document.getElementById('cidade_estado_pais').value,
                 contato: document.getElementById('contato').value,
                 servico: document.getElementById('servico').value,
-                descricao: document.getElementById('descricao').value,
+                email_servico: document.getElementById('email_servico').value,
+                nome_prestador: document.getElementById('nome_prestador').value,
+                cnpj_cpf_servico: document.getElementById('cnpj_cpf_servico').value,
+                endereco_servico: document.getElementById('endereco_servico').value,
+                cidade_pais_servico: document.getElementById('cidade_pais_servico').value,
+
+                //ERROS AQUI
                 valor: document.getElementById('valor').value,
+                descricao: document.getElementById('descricao').value,
                 codigo_swift: document.getElementById('codigo_swift').value,
                 codigo_iban: document.getElementById('codigo_iban').value,
             };

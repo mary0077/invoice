@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
@@ -31,10 +31,10 @@
                     <div class="hr"></div>
                     <div class="invoice-head-middle">
                         <div class="invoice-head-middle-left text-start">
-                            <p><span class="text-bold">Date</span>: <span contenteditable="true">DD/MM/AAAA</span></p>
+                            <p><span class="text-bold">Vencimento</span>: <span id="data" contenteditable="true">DD/MM/AAAA</span></p>
                         </div>
                         <div class="invoice-head-middle-right text-end">
-                            <p><span class="text-bold">Invoice N°: </span><span contenteditable="true">00000</span></p>
+                            <p><span class="text-bold">Invoice N°: </span><span id="numero_invoice" contenteditable="true">00000</span></p>
                         </div>
                     </div>
                     <div class="hr"></div>
@@ -42,21 +42,21 @@
                         <div class="invoice-head-bottom-left">
                             <ul>
                                 <li class='text-bold'>Invoice para:</li>
-                                <li contenteditable="true">Digite Nome Completo</li>
-                                <li contenteditable="true">CNPJ/CPF</li>
-                                <li contenteditable="true">Informe o endereço</li>
-                                <li contenteditable="true">Cidade/Estado/País</li>
-                                <li contenteditable="true">Contato</li>
+                                <li contenteditable="true" id="nome">Digite Nome Completo</li>
+                                <li contenteditable="true" id="cnpj_cpf">CNPJ/CPF</li>
+                                <li contenteditable="true" id="endereco">Informe o endereço</li>
+                                <li contenteditable="true" id="cidade_estado_pais">Cidade/Estado/País</li>
+                                <li contenteditable="true" id="contato">Contato</li>
                             </ul>
                         </div>
                         <div class="invoice-head-bottom-right">
                             <ul class="text-end">
                                 <li class='text-bold'>Pagar para:</li>
-                                <li contenteditable="true">Prestador do Serviço</li>
-                                <li contenteditable="true">CNPJ/CPF</li>
-                                <li contenteditable="true">Informe o Endereço</li>
-                                <li contenteditable="true">Cidade/País</li>
-                                <li contenteditable="true">Email</li>
+                                <li contenteditable="true" id="nome_prestador">Prestador do Serviço</li>
+                                <li contenteditable="true" id="cnpj_cpf_servico">CNPJ/CPF</li>
+                                <li contenteditable="true" id="endereco_servico">Informe o Endereço</li>
+                                <li contenteditable="true" id="cidade_pais_servico">Cidade/País</li>
+                                <li contenteditable="true" id="email_servico">Email</li>
                             </ul>
                         </div>
                     </div>
@@ -69,31 +69,23 @@
                                     <td class="text-bold">Título do Serviço</td>
                                     <td class="text-bold">Descrição</td>
                                     <td class="text-bold">Valor</td>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td contenteditable="true">Informe o serviço</td>
-                                    <td contenteditable="true">Descrição do serviço</td>
-                                    <td contenteditable="true">R$0.00</td>
-
+                                    <td contenteditable="true" id="servico">Informe o serviço</td>
+                                    <td contenteditable="true" id="descricao">Descrição do serviço</td>
+                                    <td contenteditable="true" id="valor">R$0.00</td>
                                 </tr>
-                              
-                                </tbody>
+                            </tbody>
                         </table>
-                        <div class="invoice-body-bottom">
-                            <div class="invoice-body-info-item border-bottom">
-                                <div class="info-item-td text-end"></div>
-                                <div class="info-item-td text-end text-bold">Total</div>
-                            </div>
                             <div class="invoice-body-info-item border-bottom">
                                 <div class="info-item-td text-end text-bold">Código SWIFT:</div>
-                                <div class="info-item-td text-end" contenteditable="true">00000</div>
+                                <div contenteditable="true" class="info-item-td text-end" id="codigo_swift">00000</div>
                             </div>
                             <div class="invoice-body-info-item">
                                 <div class="info-item-td text-end text-bold">Código IBAN:</div>
-                                <div class="info-item-td text-end" contenteditable="true">00000</div>
+                                <div contenteditable="true" class="info-item-td text-end" id="codigo_iban">00000</div>
                             </div>
                         </div>
                     </div>
@@ -102,53 +94,99 @@
                     <p><span class="text-bold text-center">NOTE:&nbsp;</span>Este é um recibo gerado por computador e não requer assinatura física.</p>
 
                     <div class="invoice-btns">
-                        <button type="button" class="invoice-btn" onclick="printInvoice()">
+                        <button type="button" class="invoice-btn" onclick="submitForm()">
                             <span>
                                 <i class="fa-solid fa-print"></i>
                             </span>
                             <span>Imprimir</span>
                         </button>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        function enableEditing() {
-            var editableElements = document.querySelectorAll('[contenteditable="true"]');
-            editableElements.forEach(function (element) {
-                element.setAttribute('contenteditable', 'true');
-            });
+
+    function formatarCpfCnpj(campo) {
+    var valor = campo.innerText.replace(/[^\d]/g, '');
+    var formatado = '';
+
+    if (valor.length === 11) { // CPF
+    formatado = valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    } else if (valor.length === 14) { // CNPJ
+    formatado = valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+    } else {
+    formatado = 'Formato inválido';
+    }
+
+    campo.innerText = formatado;
+    }
+
+
+    function formatarContato(campo) {
+        var valor = campo.innerText.replace(/[^\d]/g, ''); 
+        var formatado = '';
+
+        if (valor.length === 11) { // número de celular brasileiro
+            formatado = valor.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (valor.length === 10) { // número de telefone brasileiro sem DDD
+            formatado = valor.replace(/(\d{5})(\d{4})/, '$1-$2');
+        } else {
+            formatado = 'Formato inválido';
         }
+
+        campo.innerText = formatado;
+    }
+
+
+
+    function submitForm() {
     
-        function updateTotal() {
-            var rows = document.querySelectorAll('tbody tr');
-            var total = 0;
-    
-            rows.forEach(function (row) {
-                var amountCell = row.querySelector('td:nth-child(3)');
-                var amount = parseFloat(amountCell.textContent.replace('R$', '').replace(',', '.'));
-    
-                total += amount;
-            });
-    
-            var totalCell = document.querySelector('.invoice-body-info-item.border-bottom .info-item-td.text-end');
-            totalCell.textContent = 'R$' + total.toFixed(2);
-        }
-    
-        function printInvoice() {
-            enableEditing();
-            updateTotal();
-            window.print();
-        }
-    
-        document.addEventListener('input', function (event) {
-            if (event.target.closest('td') && event.target.closest('td').cellIndex === 2) {
-                updateTotal();
-            }
-        });
-    </script>
+    var urlParams = new URLSearchParams(window.location.search);
+
+    document.getElementById('numero_invoice').innerText = urlParams.get('numero_invoice') || '00000';
+    document.getElementById('data').innerText = urlParams.get('data') || 'DD/MM/AAAA';
+    document.getElementById('nome').innerText = urlParams.get('nome') || 'Digite Nome Completo';
+    document.getElementById('cnpj_cpf').innerText = urlParams.get('cnpj_cpf') || 'CNPJ/CPF';
+    document.getElementById('endereco').innerText = urlParams.get('endereco') || 'Informe o endereço';
+    document.getElementById('cidade_estado_pais').innerText = urlParams.get('cidade_estado_pais') || 'Cidade/Estado/País';
+    document.getElementById('contato').innerText = urlParams.get('contato') || 'Contato';
+    document.getElementById('servico').innerText = urlParams.get('servico') || 'Serviço';
+    document.getElementById('nome_prestador').innerText = urlParams.get('nome_prestador') || 'Digite Nome Completo';
+    document.getElementById('cnpj_cpf_servico').innerText = urlParams.get('cnpj_cpf_servico') || 'CNPJ/CPF';
+    document.getElementById('endereco_servico').innerText = urlParams.get('endereco_servico') || 'Informe o Endereço';
+    document.getElementById('cidade_pais_servico').innerText = urlParams.get('cidade_pais_servico') || 'Cidade/País';
+    document.getElementById('email_servico').innerText = urlParams.get('email_servico') || 'Email';
+
+    document.getElementById('descricao').innerText = urlParams.get('descricao') || 'Descrição do serviço';
+    document.getElementById('valor').innerText = 'R$' + (urlParams.get('valor') || '0.00');
+    document.getElementById('codigo_swift').innerText = urlParams.get('codigo_swift') || '00000';
+    document.getElementById('codigo_iban').innerText = urlParams.get('codigo_iban') || '00000';
+
+
+    var dataParam = urlParams.get('data') || 'DD/MM/AAAA';
+
+    var dataFormatada = new Date(dataParam).toLocaleDateString('pt-BR');
+
+    document.getElementById('data').innerText = dataFormatada;
+
+    var valorParam = parseFloat(urlParams.get('valor')) || 0.00;
+
+    var valorFormatado = valorParam.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    document.getElementById('valor').innerText = valorFormatado;
+
+    formatarCpfCnpj(document.getElementById('cnpj_cpf'));
+    formatarCpfCnpj(document.getElementById('cnpj_cpf_servico'));
+
+    formatarContato(document.getElementById('contato'));
+
+    window.print();
+    }
+    submitForm();
+
+
+</script>
 </body>
 
 </html>
