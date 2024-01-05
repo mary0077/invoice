@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador Invoice</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        min-width: 100%;
+         /* Aumentei a largura para ocupar 100% da largura disponível */
+    }
+    
+    form {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 25%;
+        box-sizing: border-box;
+    }
+    
+    h1 {
+        text-align: center;
+        color: #0e3fa8;
+    }
+    
+    label {
+        display: block;
+        margin: 8px 0;
+        font-weight: bold;
+    }
+    
+    input {
+        width: calc(100% - 16px);
+        padding: 8px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+    }
+    
+    hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+    }
+    
+    button {
+        background-color: #0e3fa8;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 50%;
+        margin-right: 50%;
+    }
+    
+    button:hover {
+        background-color: #0e3fa8;
+    }
+    
+    button:active {
+        background-color: #0e3fa8;
+    }
+    </style>
+    
+<body>
+    <form id="infoForm">
+        <h1>GERADOR INVOICE</h1>
+        <hr>
+        <label for="numero_invoice">Número do Invoice:</label>
+        <input type="text" id="numero_invoice" name="numero_invoice" required>
+
+        <label for="data">Data:</label>
+        <input style="font-family:Arial, Helvetica, sans-serif; font-size: 18px;" type="date" id="data" name="data" required>
+
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="cnpj_cpf">CNPJ/CPF:</label>
+        <input type="text" id="cnpj_cpf" name="cnpj_cpf" required>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required>
+
+        <label for="cidade_estado_pais">Cidade/Estado/País:</label>
+        <input type="text" id="cidade_estado_pais" name="cidade_estado_pais" required>
+
+        <label for="contato">Contato:</label>
+        <input type="text" id="contato" name="contato" required>
+
+        <label for="servico">Título do Serviço:</label>
+        <input type="text" id="servico" name="servico" required>
+
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" required>
+
+        <label for="valor">Valor:</label>
+        <input type="text" id="valor" name="valor" required>
+
+        <label for="codigo_swift">Código SWIFT:</label>
+        <input type="text" id="codigo_swift" name="codigo_swift" required>
+
+        <label for="codigo_iban">Código IBAN:</label>
+        <input type="text" id="codigo_iban" name="codigo_iban" required>
+
+        <button style="margin-left: 24%;" type="button" onclick="submitForm()">Enviar</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            var formData = {
+                numero_invoice: document.getElementById('numero_invoice').value,
+                data: document.getElementById('data').value,
+                nome: document.getElementById('nome').value,
+                cnpj_cpf: document.getElementById('cnpj_cpf').value,
+                endereco: document.getElementById('endereco').value,
+                cidade_estado_pais: document.getElementById('cidade_estado_pais').value,
+                contato: document.getElementById('contato').value,
+                servico: document.getElementById('servico').value,
+                descricao: document.getElementById('descricao').value,
+                valor: document.getElementById('valor').value,
+                codigo_swift: document.getElementById('codigo_swift').value,
+                codigo_iban: document.getElementById('codigo_iban').value,
+            };
+
+            // Convertendo objeto para string de consulta
+            var queryString = Object.keys(formData).map(function (key) {
+                return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
+            }).join('&');
+
+            // Redirecionar para a página existente com os parâmetros
+            window.location.href = 'invoice.html?' + queryString;
+        }
+    </script>
+</body>
+
+</html>
