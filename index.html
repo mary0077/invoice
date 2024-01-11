@@ -1,203 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/form.css" />
     <title>Gerador Invoice</title>
-</head>
+  </head>
 
-<style>
+  <body>
+    <main class="main">
+      <h1>Gerador de invoice</h1>
+      <form class="form">
+        <div class="dados-invoice">
+          <div class="container-tipo-documento">
+            <label for="">Tipo do documento</label>
+            <div class="tipo-documento">
+              <div>
+                <input
+                  type="radio"
+                  checked
+                  name="tipo-documento"
+                  id="invoice"
+                />
+                <label for="invoice">Invoice</label>
+              </div>
+              <div>
+                <input type="radio" name="tipo-documento" id="fatura" />
+                <label for="fatura">Fatura</label>
+              </div>
+            </div>
+          </div>
+          <div class="codigo-invoice">
+            <label for="codigo-invoice"
+              >Código da invoice<span class="opcional">(opcional)</span></label
+            >
+            <input
+              type="text"
+              id="codigo-invoice"
+              name="codigo-invoice"
+              required
+            />
+          </div>
+        </div>
+        <div class="formulario">
+          <div class="fields">
+            <div class="part-1">
+              <div>
+                <label for="prestador">Prestador do serviço</label>
+                <input type="text" id="prestador" name="prestador" required />
+              </div>
+              <div>
+                <label for="id-prestador">Cnpj do prestador</label>
+                <input
+                  type="text"
+                  id="id-prestador"
+                  name="id-prestador"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <label for="endereco"
+                >Endereço<span class="opcional">(opcional)</span></label
+              >
+              <input type="text" id="endereco" name="endereco" />
+            </div>
+            <div class="part-2">
+              <div>
+                <label for="telefone"
+                  >Telefone<span class="opcional">(opcional)</span></label
+                >
+                <input type="text" id="telefone" name="telefone" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="number" id="email" name="email" required />
+              </div>
+            </div>
+            <div class="part-3">
+              <div>
+                <label for="cliente">Cliente</label>
+                <input type="text" id="cliente" name="cliente" required />
+              </div>
+              <div>
+                <label for="id-cliente"
+                  >Cpf ou cnpj do cliente<span class="opcional"
+                    >(opcional)</span
+                  ></label
+                >
+                <input type="text" id="id-cliente" name="id-cliente" required />
+              </div>
+            </div>
+            <div class="part-4">
+              <div>
+                <label for="valor">Valor do serviço</label>
+                <input type="number" id="valor" name="valor" required />
+              </div>
+              <div>
+                <label for="vencimento">Vencimento da fatura</label>
+                <input type="date" id="vencimento" name="vencimento" required />
+              </div>
+            </div>
+            <div>
+              <label for="titulo">Titulo do serviço</label>
+              <input type="text" id="titulo" name="titulo" required />
+            </div>
+            <div class="descricao">
+              <label for="descricao">Descrição dos serviços</label>
+              <textarea
+                rows="6"
+                type="text"
+                id="descricao"
+                name="descricao"
+                required
+              ></textarea>
+            </div>
+            <div class="part-5">
+              <div>
+                <label for="codigo-swift">Código SWIFT</label>
+                <input
+                  type="text"
+                  id="codigo-swift"
+                  name="codigo-swift"
+                  required
+                />
+              </div>
+              <div>
+                <label for="codigo-iban">Código IBAN</label>
+                <input
+                  type="text"
+                  id="codigo-iban"
+                  name="codigo-iban"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" id="submit">ENVIAR</button>
+      </form>
+    </main>
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    min-width: 100%;
-}
-
-form {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 50%;
-    box-sizing: border-box;
-}
-
-h1 {
-    text-align: center;
-    color: #0e3fa8;
-}
-
-.label-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-}
-
-label {
-    font-weight: bold;
-    margin-left: 45px; /* Adicionado espaço abaixo do rótulo */
-}
-
-.input-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 12px;
-}
-
-input {
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    margin-bottom: 8px;
-    margin-left: 10px;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 20px 0;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-button {
-    background-color: #0e3fa8;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 40%;
-    height: 4vh;
-    font-size: 17px;
-    margin-left: 25%;
-}
-
-button:hover {
-    background-color: #0e3fa8;
-}
-
-button:active {
-    background-color: #0e3fa8;
-}
-
-
-    </style>
-    
-<body>
-    <form id="infoForm">
-        <h1>GERADOR INVOICE</h1>
-        
-        <br><br>
-        <label for="numero_invoice">Número do Invoice/Fatura:</label>
-        <input style="width: 10%;" type="text" id="numero_invoice" name="numero_invoice" required>
-
-        <label for="data">Vencimento da Fatura:</label>
-        <input style="font-family:Arial, Helvetica, sans-serif; font-size: 18px;" type="date" id="data" name="data" required>
-<br><br><br>
-        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: #0e3fa8;">INVOICE PARA:</h2>
-<br>
-
-        <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" name="nome" required>
-
-        <label style="margin-left: 95px;" for="cnpj_cpf">CNPJ/CPF:</label>
-        <input type="text" id="cnpj_cpf" name="cnpj_cpf" required>
-        <br><br><br>
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco" required>
-
-        <label style="margin-left: 95px;" for="cidade_estado_pais">Cidade/Estado/País:</label>
-        <input type="text" id="cidade_estado_pais" name="cidade_estado_pais" required>
-        <br><br><br>
-        <label for="contato">Contato:</label>
-        <input type="number" id="contato" name="contato" required>
-
-        <label style="margin-left: 95px;" for="servico">Título do Serviço:</label>
-        <input type="text" id="servico" name="servico" required>
-        <br><br><br>
-        <label for="descricao">Descrição:</label>
-        <input type="text" id="descricao" name="descricao" required>
-
-        <label style="margin-left: 95px;" for="valor">Valor:</label>
-        <input type="number" id="valor" name="valor" required>
-
-        <br><br><br>
-        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif; color: #0e3fa8">PAGAR PARA:</h2>
-<br>
-
-        <label for="nome_prestador">Nome do Prestador:</label>
-        <input type="text" id="nome_prestador" name="nome_prestador" required>
-
-        <label style="margin-left: 20px;" for="cnpj_cpf_servico">CNPJ/CPF:</label>
-        <input type="text" id="cnpj_cpf_servico" name="cnpj_cpf_servico" required>
-<br><br><br>
-        <label for="endereco_servico">Endereço:</label>
-        <input type="text" id="endereco_servico" name="endereco_servico" required>
-
-        <label style="margin-left: 95px;" for="cidade_pais_servico">Cidade/País:</label>
-        <input style="margin-left: 10px;" type="text" id="cidade_pais_servico" name="cidade_pais_servico" required>
-<br><br><br>
-        <label for="email_servico">Email:</label>
-        <input type="email" id="email_servico" name="email_servico" required>
-
-        <label for="codigo_swift">Código SWIFT:</label>
-        <input style="width: 10%;" type="text" id="codigo_swift" name="codigo_swift" required>
-
-        <label for="codigo_iban">Código IBAN:</label>
-        <input style="width: 10%;" type="text" id="codigo_iban" name="codigo_iban" required>
-<br> <br><br>
-        <button type="button" onclick="submitForm()">ENVIAR</button>
-    </form>
-
-    <script>
-        function submitForm() {
-            var formData = {
-                numero_invoice: document.getElementById('numero_invoice').value,
-                data: document.getElementById('data').value,
-                nome: document.getElementById('nome').value,
-                cnpj_cpf: document.getElementById('cnpj_cpf').value,
-                endereco: document.getElementById('endereco').value,
-                cidade_estado_pais: document.getElementById('cidade_estado_pais').value,
-                contato: document.getElementById('contato').value,
-                servico: document.getElementById('servico').value,
-                email_servico: document.getElementById('email_servico').value,
-                nome_prestador: document.getElementById('nome_prestador').value,
-                cnpj_cpf_servico: document.getElementById('cnpj_cpf_servico').value,
-                endereco_servico: document.getElementById('endereco_servico').value,
-                cidade_pais_servico: document.getElementById('cidade_pais_servico').value,
-
-                //ERROS AQUI
-                valor: document.getElementById('valor').value,
-                descricao: document.getElementById('descricao').value,
-                codigo_swift: document.getElementById('codigo_swift').value,
-                codigo_iban: document.getElementById('codigo_iban').value,
-            };
-
-            // Convertendo objeto para string de consulta
-            var queryString = Object.keys(formData).map(function (key) {
-                return encodeURIComponent(key) + '=' + encodeURIComponent(formData[key]);
-            }).join('&');
-
-            // Redirecionar para a página existente com os parâmetros
-            window.location.href = 'invoice.html?' + queryString;
-        }
-    </script>
-</body>
-
+    <script src="script/main.js"></script>
+  </body>
 </html>

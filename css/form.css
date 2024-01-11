@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.form {
+  background-color: #999;
+  width: 900px;
+  border-radius: 8px;
+  padding: 32px;
+}
+
+label:not(.tipo-documento div label) {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.container-tipo-documento {
+  flex: 1;
+}
+
+.dados-invoice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.dados-invoice input[type="text"] {
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+}
+
+.tipo-documento {
+  display: flex;
+  gap: 20px;
+}
+
+input[type="radio" i] {
+  appearance: unset;
+  background-color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+
+input[type="radio" i]:checked::after {
+  background-color: red;
+  content: "";
+  display: block;
+  width: 9px;
+  height: 9px;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  transform: translate(-50%, 50%);
+  position: absolute;
+}
+
+.tipo-documento div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.codigo-invoice {
+  flex: 1;
+}
+
+.fields input,
+textarea {
+  width: 100%;
+  resize: none;
+  border-radius: 6px;
+  border: none;
+}
+
+.fields .descricao {
+  margin-top: 8px;
+}
+
+.fields div {
+  margin-top: 8px;
+}
+
+.fields .part-1,
+.fields .part-2,
+.fields .part-3,
+.fields .part-4,
+.part-5 {
+  display: flex;
+  gap: 20px;
+}
+
+.fields div {
+  flex-basis: 418px;
+}
+
+input,
+textarea {
+  padding: 8px;
+}
+
+.opcional {
+  font-size: 12px;
+  margin-left: 8px;
+  color: #ddd;
+  font-style: italic;
+}
