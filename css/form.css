@@ -7,14 +7,17 @@
 
 body {
   display: flex;
-  height: 100vh;
   justify-content: center;
+  padding-top: 60px;
+  margin-bottom: 60px;
 }
 
 .form {
-  background-color: #999;
+  background-color: white;
   width: 900px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  margin-top: 20px;
   padding: 32px;
 }
 
@@ -23,8 +26,14 @@ label:not(.tipo-documento div label) {
   margin-bottom: 4px;
 }
 
-.container-tipo-documento {
-  flex: 1;
+.container-tipo-documento,
+.codigo-invoice {
+  flex-grow: 1;
+  flex-basis: 408px;
+}
+
+.codigo-invoice input {
+  background-color: #f1f1f1;
 }
 
 .dados-invoice {
@@ -43,12 +52,12 @@ label:not(.tipo-documento div label) {
 
 .tipo-documento {
   display: flex;
-  gap: 20px;
+  gap: 40px;
 }
 
 input[type="radio" i] {
   appearance: unset;
-  background-color: white;
+  background-color: #002949;
   border-radius: 50%;
   width: 18px;
   height: 18px;
@@ -56,7 +65,7 @@ input[type="radio" i] {
 }
 
 input[type="radio" i]:checked::after {
-  background-color: red;
+  background-color: white;
   content: "";
   display: block;
   width: 9px;
@@ -74,16 +83,13 @@ input[type="radio" i]:checked::after {
   gap: 6px;
 }
 
-.codigo-invoice {
-  flex: 1;
-}
-
 .fields input,
 textarea {
   width: 100%;
   resize: none;
   border-radius: 6px;
-  border: none;
+  background-color: #f1f1f1;
+  border: 1px solid transparent;
 }
 
 .fields .descricao {
@@ -112,9 +118,34 @@ textarea {
   padding: 8px;
 }
 
+input:focus:not(input[type="radio"]),
+textarea:focus {
+  border: 1px solid #002949;
+}
+
 .opcional {
   font-size: 12px;
   margin-left: 8px;
   color: #ddd;
   font-style: italic;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #59b6ff;
+  color: white;
+  padding: 12px 34px;
+  border-radius: 8px;
+  width: 408px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  transition: 0.2s all;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #002949;
+  color: white;
 }
